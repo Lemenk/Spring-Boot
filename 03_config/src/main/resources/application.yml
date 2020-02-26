@@ -1,0 +1,16 @@
+server:
+  port: 8090
+
+person:
+  lastName: zhangsan
+  age: 18
+  boss: false
+  birthday: 2012/05/23
+  map: {k1: v1, k2: 2}
+  list:
+    - lisi
+    - zhaoliu
+
+  dog:
+    name: 狗子
+    age: 2
