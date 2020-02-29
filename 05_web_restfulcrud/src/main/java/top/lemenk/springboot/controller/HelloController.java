@@ -2,7 +2,9 @@ package top.lemenk.springboot.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import top.lemenk.springboot.exception.UserNotExistException;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -19,9 +21,18 @@ import java.util.Map;
 @Controller
 public class HelloController {
 
+    /*//配置访问登陆页
+    @RequestMapping({"/","/login.html"})
+    public String login(){
+        return "login.html";
+    }*/
+
     @ResponseBody
     @RequestMapping("/hello")
-    public String hello(){
+    public String hello(@RequestParam("user") String user){
+        if(user.equals("aaa")){
+            throw new UserNotExistException();
+        }
         return "Hello World";
     }
 

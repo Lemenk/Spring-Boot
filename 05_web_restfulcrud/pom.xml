@@ -37,6 +37,13 @@
             <version>3.3.1</version>
         </dependency>
 
+        <!--引入bootstrap-webjar-->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootstrap</artifactId>
+            <version>4.4.1</version>
+        </dependency>
+
         <!--引入模板引擎thymeleaf-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
