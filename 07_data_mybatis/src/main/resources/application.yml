@@ -1,0 +1,59 @@
+spring:
+  #配置jdbc数据连接
+  datasource:
+    #基本配置
+    url: jdbc:mysql://39.96.42.61:3307/mybatis
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    initialization-mode: always
+    type: com.alibaba.druid.pool.DruidDataSource
+    #其他配置
+    druid:
+      initial-size: 5
+      max-active: 100
+      min-idle: 5
+      max-wait: 60000
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      validation-query: SELECT 1 FROM DUAL
+      validation-query-timeout: 60000
+      test-on-borrow: false
+      test-on-return: false
+      test-while-idle: true
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 100000
+
+      ###监控配置 begin###
+      # WebStatFilter配置，说明请参考Druid Wiki，配置_配置WebStatFilter
+      web-stat-filter.enabled: true
+      web-stat-filter.url-pattern: /*
+      web-stat-filter.exclusions: [.js,.gif,.jpg,.png,.css,.sql]
+      # StatViewServlet配置，说明请参考Druid Wiki，配置_StatViewServlet配置
+      stat-view-servlet.enabled: true
+      stat-view-servlet.url-pattern: /druid/*
+      stat-view-servlet.reset-enable: false
+      stat-view-servlet.login-username: admin
+      stat-view-servlet.login-password: admin
+      ###监控配置 end###
+
+      # 配置StatFilter
+      filter:
+        stat:
+          db-type: mysql
+          log-slow-sql: true
+          slow-sql-millis: 5000
+        # 配置WallFilter
+        wall:
+          enabled: true
+          db-type: mysql
+          #学习阶段需要开启
+          config:
+            delete-allow: true
+            drop-table-allow: true
+#    schema:
+#        - classpath:sql/department.sql
+#        - classpath:sql/employee.sql
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
