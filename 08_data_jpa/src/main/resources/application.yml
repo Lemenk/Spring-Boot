@@ -1,0 +1,17 @@
+spring:
+  #配置jdbc数据连接
+  datasource:
+    #基本配置
+    url: jdbc:mysql://39.96.42.61:3307/jpa
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    initialization-mode: always
+
+  #JAP配置
+  jpa:
+    hibernate:
+      #更新或者创建数据表结构
+      ddl-auto: update
+    #在控制台显示SQL
+    show-sql: true
